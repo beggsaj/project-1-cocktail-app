@@ -15,6 +15,14 @@
     </div>
     <div id="drinks"></div>
     <div id="meals"></div>
+
+    <input type="text" id="textDate" onblur="ValidateDoB()" />
+    <span class="error" id="lblError"></span>
+    <br />
+    <br />
+    <input type="button" id="btnValidate" value="Validate" onclick="return ValidateDOB()" />
+
+
     <script src="assets/js/script.js"></script>
 </body>
 </html>
