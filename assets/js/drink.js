@@ -2,6 +2,8 @@ var drinkButton = document.querySelector('.drink');
 var drinksContainer = document.getElementById('drinks');
 var searchButton = document.querySelector('.searchButton');
 var input = document.querySelector('.input_text');
+var ingredientsContainer = document.getElementById('ingredients');
+var measurementsContainer = document.getElementById('measurements');
 
 
 drinkButton.addEventListener('click', function randomDrink() {
@@ -22,8 +24,8 @@ drinkButton.addEventListener('click', function randomDrink() {
                     var ingredients = document.createElement('h3');
                     measurements.textContent = eval("drink.strMeasure" + i);
                     ingredients.textContent = eval("drink.strIngredient" + i);
-                    drinksContainer.append(measurements);
-                    drinksContainer.append(ingredients);
+                    measurementsContainer.append(measurements);
+                    ingredientsContainer.append(ingredients);
                 }
                 var instructions = document.createElement('h3');
                 instructions.textContent = drink.strInstructions;

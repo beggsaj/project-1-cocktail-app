@@ -2,6 +2,8 @@ var mealButton = document.querySelector('.meal');
 var mealsContainer = document.getElementById('meals');
 var searchButton = document.querySelector('.searchButton');
 var input = document.querySelector('.input_text');
+var ingredientsContainer = document.getElementById('ingredients');
+var measurementsContainer = document.getElementById('measurements');
 
 
 mealButton.addEventListener('click', function randommeal() {
@@ -22,8 +24,8 @@ mealButton.addEventListener('click', function randommeal() {
                     var ingredients = document.createElement('h3');
                     measurements.textContent = eval("meal.strMeasure" + i);
                     ingredients.textContent = eval("meal.strIngredient" + i);
-                    mealsContainer.append(measurements);
-                    mealsContainer.append(ingredients);
+                    measurementsContainer.append(measurements);
+                    ingredientsContainer.append(ingredients);
                 }
                 var instructions = document.createElement('h3');
                 instructions.textContent = meal.strInstructions;
