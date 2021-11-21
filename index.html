@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +8,85 @@
     <title>Cocktail App</title>
 </head>
 <body>
-    <h1>Cocktail App</h1>
-    <p>Brief Overview of Project</p>
-    <div>
-        <button class="drink">Drink</button>
-        <button class="food">Food</button>
+    <header>
+        <h1>Cocktail and Dinner Planner</h1>
+    </header>
+    
+    <h2 class="directions">
+        Let us plan your dinner and drinks! <br>
+        Choose a random meal and cocktail for your dinner, or type in an ingredient 
+        you have to see selections you can choose from.
+    </h2>
+    <!--Container for all cards-->
+    <div class="container">
+        <!--Food-->
+        <!--card 1-->
+        <div class="card food-choice">
+            <h4 class="card-header">
+              Choose a Random Meal  
+            </h4>
+            <button class="food">Food</button> 
+        </div>
+        <!--card 2-->
+
+        <div class="card food-choice">
+            <h4 class="card-header">
+              Choose an Ingredient for Your Meal  
+            </h4>
+            <button class="food">Food</button> 
+        </div>
+
+        <!--card 3-->
+        <div class="card food-choice">
+            <h4 class="card-header">
+              Choose an Ingredient for Your Meal  
+            </h4>
+            <button class="food">Food</button> 
+        </div>
+
+        <!--Drink Cards-->
+        <!--card 4-->
+        <div class="card drink-choice">
+            <h4 class="card-header">
+                Choose a Random Cocktail
+            </h4>
+            <button class="drink">Drink</button>
+            <p id="drinkContainer"></p>
+        </div>
+
+        <!--card 5-->
+        <div class="card drink-choice">
+            <h4 class="card-header">
+                Choose the Main Ingredient for Your Cocktail
+            </h4>
+            <button class="drink">Drink</button>
+        </div>
+
+        <!--card 6-->
+        <div class="card drink-choice">
+            <h4 class="card-header">
+                Choose the Main Ingredient for Your Cocktail
+            </h4>
+            <button class="drink">Drink</button>
+        </div>
+        
+        <!--Optional: Card to Display Top Choices/Display Favorites (drag and drop)-->
+
     </div>
     <div id="drinks"></div>
     <div id="meals"></div>
+
+    <input type="text" id="textDate" onblur="ValidateDoB()" />
+    <span class="error" id="lblError"></span>
+    <br />
+    <br />
+    <input type="button" id="btnValidate" value="Validate" onclick="return ValidateDOB()" />
+
+
     <script src="assets/js/script.js"></script>
+    <footer>
+        &copy;2021 Team 4: The Lazy Bartenders
+    </footer>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
