@@ -1,0 +1,12 @@
+/* overall styling for begins */
+
+body {
+    background-color: tan;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
