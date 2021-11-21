@@ -1,7 +1,8 @@
 var drinkButton = document.querySelector('.drink');
-var foodButton = document.querySelector('.food');
 var drinksContainer = document.getElementById('drinks');
-var mealContainer = document.getElementById('meals');
+var searchButton = document.querySelector('.searchButton');
+var input = document.querySelector('.input_text');
+
 
 drinkButton.addEventListener('click', function randomDrink() {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
@@ -59,22 +60,21 @@ drinkButton.addEventListener('click', function randomDrink() {
 
 })
 
+searchButton.addEventListener('click', function specificDrink(language) {
+    var language = document.querySelector('.data-language');
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+input.value+'')
+        .then(
+            function (response) {
+                return response.json()
+               
 
-foodButton.addEventListener('click', function randomMeal() {
-    fetch('https://www.themealdb.com/api/json/v1/1/random.php')
-    .then(
-        function (response) {
-            return response.json()
-        }
-    )
-    .then(function (data) {
-        console.log(data.meals);
-        let meal = data.meals[0]
-            var mealChoice = document.createElement('h3');
-            mealChoice.textContent = meal.strMeal;
-            mealContainer.append(mealChoice);
-    })
-    .catch(function (err) {
-        console.log('fetch error', err);
-    });
-})
+            }      )
+            .then(function (data) {
+                console.log(data.drinks);
+                let drink = data.drinks[0]
+                    var drinkChoice = document.createElement('h3');
+                    drinkChoice.textContent = drink.strDrink;
+                    drinksContainer.append(drinkChoice);
+            })})
+
+
