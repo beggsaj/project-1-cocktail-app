@@ -2,8 +2,7 @@ var drinkButton = document.querySelector('.drink');
 var drinksContainer = document.getElementById('drinks');
 var searchButton = document.querySelector('.searchButton');
 var input = document.querySelector('.input_text');
-var ingredientsContainer = document.getElementById('ingredients');
-var measurementsContainer = document.getElementById('measurements');
+
 
 
 drinkButton.addEventListener('click', function randomDrink() {
@@ -20,12 +19,11 @@ drinkButton.addEventListener('click', function randomDrink() {
                 drinkChoice.textContent = drink.strDrink;
                 drinksContainer.append(drinkChoice);
                 for(let i=1; i<16; i++){
-                    var measurements = document.createElement('h3');
-                    var ingredients = document.createElement('h3');
-                    measurements.textContent = eval("drink.strMeasure" + i);
-                    ingredients.textContent = eval("drink.strIngredient" + i);
-                    measurementsContainer.append(measurements);
-                    ingredientsContainer.append(ingredients);
+                    var recipeItems = document.createElement('h3');
+                    recipeItems.textContent = eval("drink.strMeasure" + i) + " " + eval("drink.strIngredient" + i);
+                    if(eval("drink.strMeasure" + i) !== null) {
+                        drinksContainer.append(recipeItems);
+                     }
                 }
                 var instructions = document.createElement('h3');
                 instructions.textContent = drink.strInstructions;
