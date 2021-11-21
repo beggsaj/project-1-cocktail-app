@@ -3,6 +3,8 @@ var foodButton = document.querySelector('.food');
 var drinksContainer = document.getElementById('drinks');
 var mealContainer = document.getElementById('meals');
 
+
+
 drinkButton.addEventListener('click', function randomDrink() {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
         .then(
@@ -16,39 +18,6 @@ drinkButton.addEventListener('click', function randomDrink() {
                 var drinkChoice = document.createElement('h3');
                 drinkChoice.textContent = drink.strDrink;
                 drinksContainer.append(drinkChoice);
-                var ingredientOne = document.createElement('h3');
-                ingredientOne.textContent = drink.strIngredient1;
-                drinksContainer.append(ingredientOne);
-                var measurementOne = document.createElement('h3');
-                measurementOne.textContent = drink.strMeasure1;
-                drinksContainer.append(measurementOne);
-                var ingredientTwo = document.createElement('h3');
-                ingredientTwo.textContent = drink.strIngredient2;
-                drinksContainer.append(ingredientTwo);
-                var measurementTwo = document.createElement('h3');
-                measurementTwo.textContent = drink.strMeasure2;
-                drinksContainer.append(measurementTwo);
-                var ingredientThree = document.createElement('h3');
-                ingredientThree.textContent = drink.strIngredient3;
-                drinksContainer.append(ingredientThree);
-                var measurementThree = document.createElement('h3');
-                measurementThree.textContent = drink.strMeasure3;
-                drinksContainer.append(measurementThree);
-                var ingredientFour = document.createElement('h3');
-                ingredientFour.textContent = drink.strIngredient4;
-                drinksContainer.append(ingredientFour);
-                var measurementFour = document.createElement('h3');
-                measurementFour.textContent = drink.strMeasure4;
-                drinksContainer.append(measurementFour);
-                var ingredientFive = document.createElement('h3');
-                ingredientFive.textContent = drink.strIngredient5;
-                drinksContainer.append(ingredientFive);
-                var measurementFive = document.createElement('h3');
-                measurementFive.textContent = drink.strMeasure5;
-                drinksContainer.append(measurementFive);
-                var instructions = document.createElement('h3');
-                instructions.textContent = drink.strInstructions;
-                drinksContainer.append(instructions);
         })
         .catch(function (err) {
             console.log('fetch error', err);
@@ -78,3 +47,41 @@ foodButton.addEventListener('click', function randomMeal() {
         console.log('fetch error', err);
     });
 })
+
+function ValidateDOB() {
+    var lblError = document.getElementById("lblError");
+
+    //Get the date from the TextBox.
+    var dateString = document.getElementById("textDate").value;
+    var regex = /(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/;
+
+    //Check whether valid dd/MM/yyyy Date Format.
+    if (regex.test(dateString)) {
+        var parts = dateString.split("/");
+        var dtDOB = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
+        var dtCurrent = new Date();
+        lblError.innerHTML = "Eligibility 18 years ONLY."
+        if (dtCurrent.getFullYear() - dtDOB.getFullYear() < 18) {
+            return false;
+        }
+
+        if (dtCurrent.getFullYear() - dtDOB.getFullYear() == 18) {
+
+            //CD: 11/06/2018 and DB: 15/07/2000. Will turned 18 on 15/07/2018.
+            if (dtCurrent.getMonth() < dtDOB.getMonth()) {
+                return false;
+            }
+            if (dtCurrent.getMonth() == dtDOB.getMonth()) {
+                //CD: 11/06/2018 and DB: 15/06/2000. Will turned 18 on 15/06/2018.
+                if (dtCurrent.getDate() < dtDOB.getDate()) {
+                    return false;
+                }
+            }
+        }
+        lblError.innerHTML = "";
+        return true;
+    } else {
+        lblError.innerHTML = "Enter date in dd/MM/yyyy format ONLY."
+        return false;
+    }
+}
