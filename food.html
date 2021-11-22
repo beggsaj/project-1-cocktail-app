@@ -4,15 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cocktail App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='./assets/css/style.css'>
+    <title>Food</title>
 </head>
 <body>
-    <h1>Cocktail App</h1>
-    <p>Brief Overview of Project</p>
-    <div>
-        <button class="food">Food</button>
-    </div>
-    <div id="meals"></div>
-    <script src="assets/js/script.js"></script>
+    <h1>Meal Page</h1>
+    <main>
+        <div>
+          <div>
+            <h3>Random Meal</h3>
+            <div>
+              <button class="meal">Meal</button>
+          </div>
+          </div>
+  
+          <div>
+            <h3>Search By Ingredient:</h3>
+            <div id="language-buttons" class="card-body">
+              <input type="text" class="input_text">
+              <button class="searchButton">Submit</button>
+            </div>
+          </div>
+        </div>
+  
+        <div>
+          <h2 class="subtitle">
+            Meal Recipe: <span id="recipe-results"></span>
+          </h2>
+          <div id="recipe-container" class="list-group"></div>
+          <div id="meals"></div>
+        </div>
+      </main>
+    <script src="assets/js/food.js"></script>
 </body>
 </html>
