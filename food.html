@@ -6,36 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel='stylesheet' href='./assets/css/style.css'>
+    <link href="tailwind.css" rel="stylesheet">
     <title>Food</title>
 </head>
 <body>
-    <h1>Meal Page</h1>
+  <!--Navigation-->
+  <div>
+    <nav class="p-5">
+        <ul>
+            <li class="text-gray-700 font-bold">
+                <a href="index.html">
+                    <span>Home</span>
+                    </a>
+            </li>
+            <li>
+                <a href="drink.html">
+                <span>Drinks</span>
+                </a>
+            </li>
+            <li>
+                <a href="food.html">
+                    <span>Food</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+  </div>
+
+    <header>
+      <h2 class="flex justify-center text-6xl font-semibold">Meal Page</h2>
+    </header>
+    
     <main>
-        <div>
+      <div class="p-10 flex-wrap">
+      <div class="grid grid-flow-row auto-rows-max md:auto-rows-min gap-2 place-content-start flex">
+      <!--random meal card-->
+      <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+          <div class="flex-wrap">
+            <h2>Random Meal</h2>
+            <p>If you would like a random meal to be chosen for you, press "Get Meal"</p>
+          </div>
           <div>
-            <h3>Random Meal</h3>
-            <div>
-              <button class="meal">Meal</button>
+              <button id="meal" class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700">
+                Get Meal</button>
           </div>
-          </div>
-  
-          <div>
-            <h3>Search By Ingredient:</h3>
-            <div id="language-buttons" class="card-body">
-              <input type="text" class="input_text">
-              <button class="searchButton">Submit</button>
-            </div>
-          </div>
-        </div>
-  
-        <div>
+      </div>
+        <!--start ingredient card-->
+      <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex space-evenly space-x-4">
+            <h2>Search By Ingredient:</h2>
+              <div id="language-buttons" class="p-2">
+                <input type="text" id="input_text" class="bg-gray-200 border-1 border-black-400 p-1">
+                <button id="searchButton" class="p-1 justify-self-end py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700 align-bottom">
+                  Submit</button>
+              </div>
+            
+      </div>
+      <!--end card-->
+        
+
+      <!--ingredients/directions list card-->
+      <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex space-evenly space-x-4">
           <h2 class="subtitle">
-            Meal Recipe: <span id="recipe-results"></span>
+            Meal Recipe & Directions: <span id="recipe-results" class="list-inside list-disc"></span>
           </h2>
-          <div id="recipe-container" class="list-group"></div>
-          <div id="meals"></div>
-        </div>
-      </main>
-    <script src="assets/js/food.js"></script>
+          <div id="recipe-container" >
+            <div id="meals"></div>
+          </div>
+      </div>
+
+    <!--end grid row div-->
+    </div>
+  
+    </main>
+    <script src="./assets/js/food.js"></script>
 </body>
 </html>
