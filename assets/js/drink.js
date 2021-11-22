@@ -32,11 +32,30 @@ drinkButton.addEventListener('click', function randomDrink() {
         .catch(function (err) {
             console.log('fetch error', err);
         });
-
-    
-
-
 })
+
+searchButton.addEventListener('click', function randomDrink() {
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+input.value+'')
+        .then(
+            function (response) {
+                return response.json()
+            })
+        .then(function (data) {
+            console.log(data.drinks);
+            let drink = data.drinks[0]
+            var drinkChoice = document.createElement('h3')
+            drinkChoice.textContent = drink.strDrink
+            drinksContainer.append(drinkChoice)
+            var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drink.strDrink;
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+            .then(function (response) {
+                console.log("Drink query: " + queryURL);
+                console.log(response);
+        })
+})})
 
 
 
