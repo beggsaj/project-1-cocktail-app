@@ -2,6 +2,19 @@ var drinkButton = document.getElementById('drink');
 var drinksContainer = document.getElementById('drinks');
 var searchButton = document.getElementById('searchButton');
 var input = document.getElementById('input_text');
+var modal = document.getElementById('modal-popup');
+var button = document.getElementById('yes-btn');
+var btn = document.getElementById('no-btn');
+
+document.querySelector('#yes-btn').addEventListener('click', function(event) {
+    modal.style.display = 'none';
+    event.preventDefault();
+});
+document.querySelector('#no-btn').addEventListener("click", function(event) {
+    document.getElementById("output").innerHTML += "Sorry! You must be 21 or older to continue";
+    event.preventDefault();
+}, false);
+
 
 
 
@@ -56,6 +69,8 @@ searchButton.addEventListener('click', function randomDrink() {
                 console.log(response);
         })
 })})
+
+
 
 
 
