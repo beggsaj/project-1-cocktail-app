@@ -1,7 +1,7 @@
-var mealButton = document.querySelector('.meal');
+var mealButton = document.getElementById('meal');
 var mealsContainer = document.getElementById('meals');
-var searchButton = document.querySelector('.searchButton');
-var input = document.querySelector('.input_text');
+var searchButton = document.getElementById('searchButton');
+var input = document.getElementById('input_text');
 
 
 
@@ -37,7 +37,3 @@ mealButton.addEventListener('click', function randommeal() {
 
 
 })
-
-
-
-
