@@ -1,7 +1,7 @@
-var drinkButton = document.querySelector('.drink');
+var drinkButton = document.getElementById('drink');
 var drinksContainer = document.getElementById('drinks');
-var searchButton = document.querySelector('.searchButton');
-var input = document.querySelector('.input_text');
+var searchButton = document.getElementById('searchButton');
+var input = document.getElementById('input_text');
 
 
 

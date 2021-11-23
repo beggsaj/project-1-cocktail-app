@@ -12,19 +12,19 @@
 <body>
   <!--Navigation-->
   <div>
-    <nav>
-        <ul>
-            <li class="text-gray-700 font-bold">
+    <nav class="p-5">
+        <ul class="group">
+          <li class="text-gray-700 font-bold group-hover:text-gray-900 hover:underline">
                 <a href="index.html">
                     <span>Home</span>
                     </a>
             </li>
-            <li>
+            <li class="text-gray-700 font-bold group-hover:text-gray-900 hover:underline">
                 <a href="./drink.html">
                 <span>Drinks</span>
                 </a>
             </li>
-            <li>
+            <li class="text-gray-700 font-bold group-hover:text-gray-900 hover:underline">
                 <a href="./food.html">
                     <span>Food</span>
                 </a>
@@ -33,34 +33,49 @@
     </nav>
   </div>
 
-
-    <h1>Drink Page</h1>
+  <header>
+    <h2 class="px-10 flex place-content-start md:justify-center text-6xl font-semibold">Drink Selector</h2>
+  </header>
+    
     <main>
-        <div>
-          <div>
-            <h3>Random Drink</h3>
+      <div class="p-10 flex-wrap">
+          <div class="grid grid-flow-row auto-rows-max md:auto-rows-min md:flex-grow-1 gap-2 place-content-start md:justify-center">
+            <!--random drink card-->
+          <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+            <div class="flex-wrap">
+              <h3 class="font-bold">Random Drink</h3>
+              <p>If you would like a random cocktail to be chosen for you, press "Get Cocktail"</p>
+            </div>
             <div>
-              <button class="drink">Drink</button>
-          </div>
-          </div>
-  
-          <div>
-            <h3>Search By Alcohol:</h3>
-            <div id="language-buttons" class="card-body">
-              <input type="text" class="input_text">
-              <button class="searchButton">Submit</button>
+                <button id="drink" class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700">
+                  Get Cocktail</button>
             </div>
           </div>
+          <!--end card-->
+          <!--ingredient input card-->
+          <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex space-evenly space-x-4">
+            <h2 class="font-bold">Search By Alcohol:</h2>
+            <div id="language-buttons" class="p-2"><!--was "class= card-body"-->
+              <input type="text" id="input_text" class="bg-gray-200 border-1 border-black-400 p-1">
+              <button id="searchButton" class="p-1 justify-self-end py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700 align-bottom">
+                Submit</button>
+                <!--was class=searchButton-->
+            </div>
+          </div>
+          <!--end card-->
+        
+          <!--ingredients/directions list card-->
+          <div class="p-6 min-w-full max-w-sm mx-auto bg-white rounded-xl shadow-md flex space-evenly space-x-4">
+            <h2 class="subtitle font-bold">
+              Drink Recipe: <span id="recipe-results"></span>
+            </h2>
+            <div id="recipe-container" class="list-group"></div>
+            <div id="drinks"></div>
+          </div>
         </div>
-  
-        <div>
-          <h2 class="subtitle">
-            Drink Recipe: <span id="recipe-results"></span>
-          </h2>
-          <div id="recipe-container" class="list-group"></div>
-          <div id="drinks"></div>
-        </div>
-      </main>
+      </div>
+      <!--end grid row div-->
+    </main>
     <script src="assets/js/drink.js"></script>
 </body>
 </html>
