@@ -45,11 +45,11 @@ searchButton.addEventListener('click', function randomDrink() {
                 return response.json()
             })
         .then(function (data) {
-            console.log(data.drinks);
+            console.log(data.meals);
             var rand = getRandomIntInclusive(0, data.meals.length)
             console.log(rand)
-            let drink = data.drinks[rand]
-            var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + drink.strMeal;
+            let meal = data.meals[rand]
+            var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + meal.strMeal;
             fetch(queryURL)
                 .then(function (response) {
                     return response.json()
