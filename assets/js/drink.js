@@ -6,14 +6,15 @@ var modal = document.getElementById('modal-popup');
 var button = document.getElementById('yes-btn');
 var btn = document.getElementById('no-btn');
 
-document.querySelector('#yes-btn').addEventListener('click', function (event) {
+
+/* document.querySelector('#yes-btn').addEventListener('click', function (event) {
     modal.style.display = 'none';
     event.preventDefault();
 });
 document.querySelector('#no-btn').addEventListener("click", function (event) {
     document.getElementById("output").innerHTML += "Sorry! You must be 21 or older to continue";
     event.preventDefault();
-}, false);
+}, false); */
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -87,3 +88,4 @@ searchButton.addEventListener('click', function randomDrink() {
                     })
         })
 })
+
