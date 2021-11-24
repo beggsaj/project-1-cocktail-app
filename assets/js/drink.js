@@ -6,16 +6,20 @@ var modal = document.getElementById('modal-popup');
 var button = document.getElementById('yes-btn');
 var btn = document.getElementById('no-btn');
 
-document.querySelector('#yes-btn').addEventListener('click', function(event) {
+document.querySelector('#yes-btn').addEventListener('click', function (event) {
     modal.style.display = 'none';
     event.preventDefault();
 });
-document.querySelector('#no-btn').addEventListener("click", function(event) {
+document.querySelector('#no-btn').addEventListener("click", function (event) {
     document.getElementById("output").innerHTML += "Sorry! You must be 21 or older to continue";
     event.preventDefault();
 }, false);
 
-
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+}
 
 
 drinkButton.addEventListener('click', function randomDrink() {
@@ -28,19 +32,19 @@ drinkButton.addEventListener('click', function randomDrink() {
         .then(function (data) {
             console.log(data.drinks);
             let drink = data.drinks[0]
-                var drinkChoice = document.createElement('h3');
-                drinkChoice.textContent = drink.strDrink;
-                drinksContainer.append(drinkChoice);
-                for(let i=1; i<16; i++){
-                    var recipeItems = document.createElement('h3');
-                    recipeItems.textContent = eval("drink.strMeasure" + i) + " " + eval("drink.strIngredient" + i);
-                    if(eval("drink.strMeasure" + i) !== null) {
-                        drinksContainer.append(recipeItems);
-                     }
+            var drinkChoice = document.createElement('h3');
+            drinkChoice.textContent = drink.strDrink;
+            drinksContainer.append(drinkChoice);
+            for (let i = 1; i < 16; i++) {
+                var recipeItems = document.createElement('h3');
+                recipeItems.textContent = eval("drink.strMeasure" + i) + " " + eval("drink.strIngredient" + i);
+                if (eval("drink.strMeasure" + i) !== null) {
+                    drinksContainer.append(recipeItems);
                 }
-                var instructions = document.createElement('h3');
-                instructions.textContent = drink.strInstructions;
-                drinksContainer.append(instructions);
+            }
+            var instructions = document.createElement('h3');
+            instructions.textContent = drink.strInstructions;
+            drinksContainer.append(instructions);
         })
         .catch(function (err) {
             console.log('fetch error', err);
@@ -48,30 +52,38 @@ drinkButton.addEventListener('click', function randomDrink() {
 })
 
 searchButton.addEventListener('click', function randomDrink() {
-    fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+input.value+'')
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + input.value + '')
         .then(
             function (response) {
                 return response.json()
             })
         .then(function (data) {
             console.log(data.drinks);
-            let drink = data.drinks[0]
-            var drinkChoice = document.createElement('h3')
-            drinkChoice.textContent = drink.strDrink
-            drinksContainer.append(drinkChoice)
+            var rand = getRandomIntInclusive(0, data.drinks.length)
+            console.log(rand)
+            let drink = data.drinks[rand]
             var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drink.strDrink;
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            })
-            .then(function (response) {
-                console.log("Drink query: " + queryURL);
-                console.log(response);
+            fetch(queryURL)
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(
+                    function (data) {
+                        let drink = data.drinks[0]
+                        console.log(drink)
+                        var drinkChoice = document.createElement('h3');
+                        drinkChoice.textContent = drink.strDrink;
+                        drinksContainer.append(drinkChoice);
+                        for (let i = 1; i < 16; i++) {
+                            var recipeItems = document.createElement('h3');
+                            recipeItems.textContent = eval("drink.strMeasure" + i) + " " + eval("drink.strIngredient" + i);
+                            if (eval("drink.strMeasure" + i) !== null) {
+                                drinksContainer.append(recipeItems);
+                            }
+                        }
+                        var instructions = document.createElement('h3');
+                        instructions.textContent = drink.strInstructions;
+                        drinksContainer.append(instructions);
+                    })
         })
-})})
-
-
-
-
-
-
+})
