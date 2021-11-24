@@ -1,11 +1,13 @@
+// @ts-check
+
 var drinkButton = document.getElementById('drink');
 var drinksContainer = document.getElementById('drinks');
 var searchButton = document.getElementById('searchButton');
 var input = document.getElementById('input_text');
-
-
-
-drinkButton.addEventListener('click', function randomDrink() {
+/**
+ * This function finds random drinks
+ */
+function randomDrink() {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
         .then(
             function (response) {
@@ -32,7 +34,9 @@ drinkButton.addEventListener('click', function randomDrink() {
         .catch(function (err) {
             console.log('fetch error', err);
         });
-})
+}
+
+drinkButton.addEventListener('click', randomDrink);
 
 searchButton.addEventListener('click', function randomDrink() {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+input.value+'')

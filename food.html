@@ -9,66 +9,73 @@
     <link href="tailwind.css" rel="stylesheet">
     <title>Food</title>
 </head>
-<body>
-  <!--Navigation-->
-  <div>
-    <nav class="p-5">
-        <ul class="group">
-            <li class="text-gray-700 font-bold group-hover:text-gray-900 hover:underline">
-                <a href="index.html">
-                    <span>Home</span>
-                    </a>
-            </li>
-            <li class="text-gray-700 font-bold group-hover:text-gray-900 hover:underline">
-                <a href="drink.html">
-                <span>Drinks</span>
-                </a>
-            </li>
-            <li class="text-gray-700 font-bold group-hover:text-gray-900 hover:underline">
-                <a href="food.html">
-                    <span>Food</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-  </div>
-
+<body class="bg-yellow-100">
     <header>
-      <h2 class="px-10 flex place-content-start md:justify-center text-6xl font-semibold">Meal Selector</h2>
+      <h2 class="p-10 bg-gradient-to-r from-yellow-700 via-yellow-200 to-yellow-700 flex place-content-start md:justify-center text-6xl font-semibold">Meal Selector</h2>
+      <!--Navigation-->
+      <div>
+        <nav class="bg-yellow-400">
+            <ul class="group justify-center grid grid-flow-col auto-cols-max md:auto-cols-min">
+                <li class="pr-6 md:px-8 text-gray-700 font-bold group-hover:text-gray-900 hover:underline">
+                    <a href="index.html">
+                        <span>Home</span>
+                        </a>
+                </li>
+                <li class="px-6 md:px-8 text-gray-700 font-bold group-hover:text-gray-900 hover:underline">
+                    <a href="./drink.html">
+                    <span>Drinks</span>
+                    </a>
+                </li>
+                <li class="px-6 md:px-8 text-gray-700 font-bold group-hover:text-gray-900 hover:underline">
+                    <a href="./food.html">
+                        <span>Food</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
     </header>
     
     <main>
-      <div class="p-10 flex-wrap">
-      <div class="grid grid-flow-row auto-rows-max md:auto-rows-min md:flex-grow-0 gap-2 place-content-start md:justify-center">
+      <div class="p-8 flex-wrap">
+      <div class="flex grid col-span-1 md:col-span-4 gap-4 justify-center">
       <!--random meal card-->
-      <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
-          <div class="flex-wrap">
+      <div class="p-4 row-span-1 col-start-1 max-w-sm mx-auto bg-white rounded-xl shadow-md flex space-x-4">
             <h2 class="font-bold">Random Meal</h2>
             <p>If you would like a random meal to be chosen for you, press "Get Meal"</p>
-          </div>
-          <div>
-              <button id="meal" class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700">
+          <div class="p-2">
+              <button id="meal" class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-yellow-700 hover:bg-yellow-800">
                 Get Meal</button>
           </div>
       </div>
-        <!--start ingredient card-->
-      <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex space-evenly space-x-4">
+        <!--start ingredient search card-->
+     
+      <div class="p-4 row-span-1 col-start-1 row-span-1 md:row-start-2 max-w-sm mx-auto bg-white rounded-xl shadow-md flex space-x-4">
             <h2 class="font-bold">Search By Ingredient:</h2>
+            
               <div id="language-buttons" class="p-2"><!--was "class= card-body"-->
-                <input type="text" id="input_text" class="bg-gray-200 border-1 border-black-400 p-1">
-                <button id="searchButton" class="p-1 justify-self-end py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700 align-bottom">
+                <div class="p-2">
+                  <input type="text" id="input_text" class="bg-gray-200 border-1 border-black-400 p-1">
+                </div>
+                <div class="p-2">
+                <button id="searchButton" class="p-3 content-end font-semibold rounded-lg shadow-md text-white bg-yellow-700 hover:bg-yellow-800 align-bottom">
                   Submit</button>
+                </div>
               </div>
       </div>
       <!--end card-->
         
       <!--ingredients/directions list card-->
-      <div class="p-6 max-w-sm min-w-full mx-auto bg-white rounded-xl shadow-md flex space-evenly space-x-4">
+      <div class="p-4 col-span-1 row-span-1 md:col-start-2 md:row-start-1 md:row-end-4 min-w-full justify-stretch max-w-sm mx-auto bg-white rounded-xl shadow-md flex space-x-4">
           <h2 class="font-bold">
             Meal Recipe & Directions: <span id="recipe-results" class="list-inside"></span>
           </h2>
-          <div id="recipe-container">
-            <div id="meals"></div>
+          <div class="p-2">
+              <div id="recipe-container">
+            </div>
+            <div class="p-2">
+              <div id="meals"></div>
+            </div>
           </div>
       </div>
 
