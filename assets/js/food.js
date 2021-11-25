@@ -1,7 +1,7 @@
 var mealButton = document.getElementById('meal');
 var mealsContainer = document.getElementById('meals');
 var searchButton = document.getElementById('searchButton');
-var input = document.getElementById('input_text');
+var input = document.getElementById('input');
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
