@@ -46,10 +46,14 @@ drinkButton.addEventListener('click', function randomDrink() {
             var instructions = document.createElement('h3');
             instructions.textContent = drink.strInstructions;
             drinksContainer.append(instructions);
+            
+            saveBtn.addEventListener('click', function saveDrink(){
+
+                // set new submission to local storage 
+                localStorage.setItem("drink", JSON.stringify(drink));
+                console.log(drink)
+
         })
-        .catch(function (err) {
-            console.log('fetch error', err);
-        });
 })
 
 searchButton.addEventListener('click', function randomDrink() {
@@ -71,7 +75,6 @@ searchButton.addEventListener('click', function randomDrink() {
                 .then(
                     function (data) {
                         let drink = data.drinks[0]
-                        console.log(drink)
                         var drinkChoice = document.createElement('h3');
                         drinkChoice.textContent = drink.strDrink;
                         drinksContainer.append(drinkChoice);
@@ -85,7 +88,16 @@ searchButton.addEventListener('click', function randomDrink() {
                         var instructions = document.createElement('h3');
                         instructions.textContent = drink.strInstructions;
                         drinksContainer.append(instructions);
+
+                        saveBtn.addEventListener('click', function saveDrink(){
+
+                              // set new submission to local storage 
+                              localStorage.setItem("drink", JSON.stringify(drink));
+                              console.log(drink)
+                              
+                    })
                     })
         })
 })
 
+})
