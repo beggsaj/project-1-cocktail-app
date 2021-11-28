@@ -41,7 +41,7 @@ drinkButton.addEventListener('click', function randomDrink() {
             for (let i = 1; i < 16; i++) {
                 var recipeItems = document.createElement('h3');
                 recipeItems.textContent = eval("drink.strMeasure" + i) + " " + eval("drink.strIngredient" + i);
-                if (eval("drink.strMeasure" + i) !== null) {
+                if (eval("drink.strMeasure" + i) != null) {
                     drinksContainer.append(recipeItems);
                 }
             }
@@ -49,16 +49,20 @@ drinkButton.addEventListener('click', function randomDrink() {
             instructions.textContent = drink.strInstructions;
             drinksContainer.append(instructions);
             
-            saveBtn.addEventListener('click', function saveDrink(){
+            //buttons to save or clear
+            saveDrinkBtn.addEventListener('click', function saveDrink(){
 
                 // set new submission to local storage 
                 localStorage.setItem("drink", JSON.stringify(drink));
                 console.log(drink)
-
-                
-
+            
+            })
+            clearDrinkBtn.addEventListener('click', function clearDrinkStored() {
+                localStorage.removeItem('drink');
+                location.reload();   
+            });
         })
-})
+    })
 
 searchButton.addEventListener('click', function randomDrink() {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + input.value + '')
@@ -93,15 +97,21 @@ searchButton.addEventListener('click', function randomDrink() {
                         instructions.textContent = drink.strInstructions;
                         drinksContainer.append(instructions);
 
-                        saveBtn.addEventListener('click', function saveDrink(){
+                        //buttons to save or clear
+                        saveDrinkBtn.addEventListener('click', function saveDrink(){
 
-                              // set new submission to local storage 
-                              localStorage.setItem("drink", JSON.stringify(drink));
-                              console.log(drink)
-                              
-                    })
+                            // set new submission to local storage 
+                            localStorage.setItem("drink", JSON.stringify(drink));
+                            console.log(drink)
+                        
+                        })
+                        clearDrinkBtn.addEventListener('click', function clearDrinkStored() {
+                            localStorage.removeItem('drink');
+                            location.reload();   
+                        });
                     })
         })
 })
 
-})
+
+
