@@ -10,6 +10,8 @@ function getRandomIntInclusive(min, max) {
 }
 
 mealButton.addEventListener('click', function randommeal() {
+    // clear old content
+    mealsContainer.textContent = '';
     fetch('https://www.themealdb.com/api/json/v1/1/random.php')
         .then(
             function (response) {
@@ -32,13 +34,20 @@ mealButton.addEventListener('click', function randommeal() {
             var instructions = document.createElement('h3');
             instructions.textContent = meal.strInstructions;
             mealsContainer.append(instructions);
+
+            saveBtn.addEventListener('click', function saveDrink(){
+
+                // set new submission to local storage 
+                localStorage.setItem("meal", JSON.stringify(meal));
+                console.log(meal)
         })
-        .catch(function (err) {
-            console.log('fetch error', err);
-        });
-})
+        })
+    })
+
 
 searchButton.addEventListener('click', function randomDrink() {
+    // clear old content
+    mealsContainer.textContent = '';
     fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + input.value + '')
         .then(
             function (response) {
@@ -70,6 +79,14 @@ searchButton.addEventListener('click', function randomDrink() {
                     var instructions = document.createElement('h3');
                     instructions.textContent = meal.strInstructions;
                     mealsContainer.append(instructions);
+
+                    saveBtn.addEventListener('click', function saveDrink(){
+
+                        // set new submission to local storage 
+                        localStorage.setItem("meal", JSON.stringify(meal));
+                        console.log(meal)
+
                 })
         })
+})
 })
