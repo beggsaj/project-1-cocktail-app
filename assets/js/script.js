@@ -19,8 +19,6 @@ document.addEventListener('DOMContentLoaded', function getDinner() {
         var instructions = document.createElement('h3');
         instructions.textContent = drink.strInstructions;
         drinksContainer.append(instructions);
-    } else {
-        drinksContainer.textContent = "Please select a drink from the meal page.";
     }
 
 
@@ -46,9 +44,7 @@ document.addEventListener('DOMContentLoaded', function getDinner() {
         var instructions = document.createElement('h3');
         instructions.textContent = meal.strInstructions;
         mealsContainer.append(instructions);
-    } else {
-        mealsContainer.textContent = "Please select a meal from the meal page.";
-    }
+    } 
 
     
 }, false);
@@ -56,11 +52,11 @@ document.addEventListener('DOMContentLoaded', function getDinner() {
 //"clear selection" buttons
 clearDrinkBtn.addEventListener('click', function clearDrinkStored() {
     localStorage.removeItem('drink');  
-    location.reload()
-})
+    location.reload();
+});
 
 clearMealBtn.addEventListener('click', function clearMealStored() {
     localStorage.removeItem('meal'); 
-    location.reload()
-})
+    location.reload();
+});
 
