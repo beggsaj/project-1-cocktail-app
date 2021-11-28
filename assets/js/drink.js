@@ -24,6 +24,8 @@ function getRandomIntInclusive(min, max) {
 
 
 drinkButton.addEventListener('click', function randomDrink() {
+     // clear old content
+    drinksContainer.textContent = '';
     fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
         .then(
             function (response) {
@@ -52,6 +54,8 @@ drinkButton.addEventListener('click', function randomDrink() {
                 // set new submission to local storage 
                 localStorage.setItem("drink", JSON.stringify(drink));
                 console.log(drink)
+
+                
 
         })
 })
