@@ -1,4 +1,4 @@
-var mealButton = document.getElementById('meal');
+var mealButton = document.getElementById('mealBtn');
 var mealsContainer = document.getElementById('meals');
 var searchButton = document.getElementById('searchButton');
 var input = document.getElementById('foodChoice');
@@ -9,13 +9,13 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 }
 
-mealButton.addEventListener('click', function randommeal() {
+mealButton.addEventListener('click', function randomMeal() {
     // clear old content
     mealsContainer.textContent = '';
     fetch('https://www.themealdb.com/api/json/v1/1/random.php')
         .then(
             function (response) {
-                return response.json()
+                return response.json();
             }
         )
         .then(function (data) {
@@ -34,20 +34,29 @@ mealButton.addEventListener('click', function randommeal() {
             var instructions = document.createElement('h3');
             instructions.textContent = meal.strInstructions;
             mealsContainer.append(instructions);
-
-            saveBtn.addEventListener('click', function saveDrink(){
+       
+            //save and clear buttons
+            saveMealBtn.addEventListener('click', function saveMeal(){
 
                 // set new submission to local storage 
                 localStorage.setItem("meal", JSON.stringify(meal));
                 console.log(meal)
-        })
-        })
+                
+            })
+            clearMealBtn.addEventListener('click', function clearMealStored() {
+                localStorage.removeItem('meal');
+                location.reload();
+                
+            });
     })
+});
+        
 
 
 searchButton.addEventListener('click', function randomDrink() {
-    // clear old content
-    mealsContainer.textContent = '';
+
+     // clear old content
+     mealsContainer.textContent = '';
     fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + input.value + '')
         .then(
             function (response) {
@@ -80,13 +89,21 @@ searchButton.addEventListener('click', function randomDrink() {
                     instructions.textContent = meal.strInstructions;
                     mealsContainer.append(instructions);
 
-                    saveBtn.addEventListener('click', function saveDrink(){
+                    
+                    //save and clear buttons
+                saveMealBtn.addEventListener('click', function saveMeal(){
 
-                        // set new submission to local storage 
-                        localStorage.setItem("meal", JSON.stringify(meal));
-                        console.log(meal)
-
+                    // set new submission to local storage 
+                    localStorage.setItem("meal", JSON.stringify(meal));
+                    console.log(meal)
+                    
+                })
+                clearMealBtn.addEventListener('click', function clearMealStored() {
+                    localStorage.removeItem('meal');
+                    location.reload();
+                    
+                });
                 })
         })
-})
-})
+
+    });
