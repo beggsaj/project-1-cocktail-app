@@ -7,15 +7,6 @@ var button = document.getElementById('yes-btn');
 var btn = document.getElementById('no-btn');
 
 
-/* document.querySelector('#yes-btn').addEventListener('click', function (event) {
-    modal.style.display = 'none';
-    event.preventDefault();
-});
-document.querySelector('#no-btn').addEventListener("click", function (event) {
-    document.getElementById("output").innerHTML += "Sorry! You must be 21 or older to continue";
-    event.preventDefault();
-}, false); */
-
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -111,7 +102,26 @@ searchButton.addEventListener('click', function randomDrink() {
                         });
                     })
         })
-})
+});
+
+
+var btn = document.querySelector('#no-btn')
+    btn.addEventListener("click", function (event) {
+    document.getElementById("output").innerHTML += "Sorry! You must be 21 or older to continue";
+    event.preventDefault();
+}, false); 
+
+var button = document.querySelector('#yes-btn')
+    button.addEventListener('click', function (event) {
+    modal.style.display = 'none';
+    event.stopPropagation;
+});
+
+
+
+
+
+
 
 
 
